@@ -1,0 +1,76 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# next.js build output
+/.next/
+/out/
+/build
+
+# Next.js cache (helps speed up builds, not needed in repo)
+.next/cache
+
+# Vercel
+.vercel
+
+# environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-debug.log*
+
+# coverage reports
+/coverage
+
+# misc system files
+.DS_Store
+Thumbs.db
+
+# certificates / keys
+*.pem
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+
+# Temporary files
+*.tmp
+*.temp
+
+# lock files (optional, ignore if you use only one package manager)
+# Uncomment if needed:
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# eslint / lint cache
+.eslintcache
+
+# storybook (if ever added later)
+storybook-static/
+
+# local testing / playground folders
+/playground/
+/temp/
+/tmp/
