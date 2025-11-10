@@ -1,6 +1,8 @@
 
+import Hero from "@components/Home/Hero/Hero";
 import { AboutUs, ChoiceUs } from "@components/Home/HomeSections";
 import Counter from "@components/Home/HomeSections/Counter/Counter";
+import Facilities from "@components/Home/HomeSections/Facilites/Facilites";
 import LatestNews from "@components/Home/HomeSections/LatestNews/LatestNews";
 import OurBlogs from "@components/Home/HomeSections/OurBlogs/OurBlogs";
 import OurClient from "@components/Home/HomeSections/OurClient/OurClient";
@@ -13,6 +15,10 @@ import UpComingEvents from "@components/Home/HomeSections/UpcomingEvents/Upcomin
 export default function Home() {
   return (
     <div className="">
+        <div>
+        <Hero />
+        <Facilities />
+      </div>
      <AboutUs />
      <Counter />
      <OurCourse />

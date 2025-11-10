@@ -28,7 +28,7 @@ export default function DepartmentSlider() {
           <p className="text-secondary font-semibold uppercase tracking-wide flex justify-center items-center gap-2">
             <FaBookOpen /> Department
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-black mb-3">
+          <h2 className="text-3xl md:text-4xl font-bold mb-3">
             Browse Our <span className="text-secondary">Department</span>
           </h2>
           <p className="text-gray-600">

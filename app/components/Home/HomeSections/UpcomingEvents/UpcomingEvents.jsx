@@ -26,7 +26,7 @@ export default function UpComingEvents() {
           <p className="text-secondary font-semibold uppercase tracking-wide flex justify-center items-center gap-2">
             Events
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-black mb-3">
+          <h2 className="text-3xl md:text-4xl font-bold mb-3">
             Our Upcoming <span className="text-secondary">Events</span>
           </h2>
           <p className="text-gray-600">
@@ -64,7 +64,7 @@ export default function UpComingEvents() {
                 key={event.id}
                 className="min-w-full md:min-w-[50%] lg:min-w-[33.33%] px-3 flex justify-center"
               >
-                <div className="bg-white rounded-t-3xl rounded-br-3xl shadow-lg overflow-hidden max-w-lg w-full group hover:shadow-xl transition-all duration-300 p-4">
+                <div className="rounded-t-3xl rounded-br-3xl shadow-lg overflow-hidden max-w-lg w-full group hover:shadow-xl transition-all duration-300 p-4">
                   {/* === Event Image === */}
                   <div className="relative mb-3">
                     <div className="relative w-full h-60">
@@ -94,7 +94,7 @@ export default function UpComingEvents() {
                       </span>
                     </div>
 
-                    <h4 className="text-xl font-semibold text-black my-2">
+                    <h4 className="text-xl font-semibold my-2">
                       {event.title}
                     </h4>
                     <p className="text-gray-600 mb-4 text-sm">{event.desc}</p>

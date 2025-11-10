@@ -2,9 +2,16 @@
 
 import Image from "next/image";
 import { FaArrowRightLong } from "react-icons/fa6";
-import sliderImage_1 from '../../../../public/assets/img/slider/slider-1.jpg';
-import sliderImage_2 from '../../../../public/assets/img/slider/slider-2.jpg';
-import sliderImage_3 from '../../../../public/assets/img/slider/slider-3.jpg';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Autoplay } from "swiper/modules";
+import { GoArrowLeft, GoArrowRight } from "react-icons/go";
+
+import "swiper/css";
+import "swiper/css/navigation";
+
+import sliderImage_1 from "../../../../public/assets/img/slider/slider-1.jpg";
+import sliderImage_2 from "../../../../public/assets/img/slider/slider-2.jpg";
+import sliderImage_3 from "../../../../public/assets/img/slider/slider-3.jpg";
 
 const slider_data = [
   {
@@ -41,63 +48,69 @@ const slider_data = [
 
 export default function Hero() {
   return (
-    <div className="carousel w-full h-screen relative">
-      {slider_data.map((item, index) => (
-        <div
-          key={item.id}
-          id={`slide${index + 1}`}
-          className="carousel-item relative w-full h-screen"
-        >
-          {/* Next.js Image */}
-          <div className="relative w-full h-full">
-            <Image
-              src={item.slider_img}
-              alt={`Slide ${index + 1}`}
-              className="object-cover"
-              fill
-            />
-          </div>
+    <section className="relative w-full h-screen overflow-hidden group">
+      <Swiper
+        modules={[Navigation, Autoplay]}
+        autoplay={{
+          delay: 3500,
+          disableOnInteraction: false,
+        }}
+        loop={true}
+        onBeforeInit={(swiper) => {
+          swiper.params.navigation.prevEl = ".button-prev-slide";
+          swiper.params.navigation.nextEl = ".button-next-slide";
+        }}
+        navigation={{
+          prevEl: ".button-prev-slide",
+          nextEl: ".button-next-slide",
+        }}
+        className="h-full"
+      >
+        {slider_data.map((item) => (
+          <SwiperSlide key={item.id}>
+            <div className="relative w-full h-screen">
+              <Image
+                src={item.slider_img}
+                alt={item.heading}
+                fill
+                className="object-cover"
+                priority
+              />
 
-          {/* Overlay + Text */}
-          <div className="absolute inset-0 bg-primary/30 flex flex-col justify-center px-10 md:px-24 text-white">
-            <div className="max-w-xl space-y-5">
-              <h2 className="text-lg md:text-xl font-bold leading-tight text-secondary underline uppercase">
-                {item.sub_heading}
-              </h2>
-              <h2 className="text-4xl md:text-5xl font-bold leading-tight capitalize">
-                {item.heading}
-              </h2>
-              <p className="text-lg md:text-xl opacity-90 capitalize">
-                {item.slider_desc}
-              </p>
-              <div className="flex gap-4 mt-4">
-                <button className="bg-secondary text-white px-5 py-3 rounded-r-full rounded-tl-full hover:bg-accent hover:text-secondary transition-colors duration-300 flex items-center gap-2">
-                  {item.btn_text1} <FaArrowRightLong />
-                </button>
-                <button className="bg-secondary text-white px-5 py-3 rounded-r-full rounded-tl-full hover:bg-accent hover:text-secondary transition-colors duration-300 flex items-center gap-2">
-                  {item.btn_text2} <FaArrowRightLong />
-                </button>
+              <div className="absolute inset-0 bg-primary/40 flex flex-col justify-center px-10 md:px-24 text-white">
+                <div className="max-w-xl space-y-5 animate-fadeIn">
+                  <h4 className="text-lg md:text-xl font-semibold text-secondary uppercase tracking-wide underline">
+                    {item.sub_heading}
+                  </h4>
+                  <h2 className="text-2xl md:text-4xl font-bold capitalize leading-tight">
+                    {item.heading}
+                  </h2>
+                  <p className="text-base md:text-md opacity-90 capitalize">
+                    {item.slider_desc}
+                  </p>
+
+                  <div className="flex flex-wrap gap-4 mt-6">
+                    <button className="bg-secondary text-white px-5 py-2 rounded-r-full rounded-tl-full hover:bg-accent hover:text-secondary transition-all duration-300 flex items-center gap-2">
+                      {item.btn_text1} <FaArrowRightLong />
+                    </button>
+                    <button className="bg-secondary text-white px-5 py-3 rounded-r-full rounded-tl-full hover:bg-accent hover:text-secondary transition-all duration-300 flex items-center gap-2">
+                      {item.btn_text2} <FaArrowRightLong />
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+          </SwiperSlide>
+        ))}
 
-          {/* Navigation Arrows */}
-          <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 justify-between">
-            <a
-              href={`#slide${index === 0 ? slider_data.length : index}`}
-              className="btn btn-circle bg-secondary text-white border-none hover:bg-white hover:text-[#012758]"
-            >
-              ❮
-            </a>
-            <a
-              href={`#slide${index + 2 > slider_data.length ? 1 : index + 2}`}
-              className="btn btn-circle bg-secondary text-white border-none hover:bg-white hover:text-[#012758]"
-            >
-              ❯
-            </a>
-          </div>
+        {/* Custom navigation buttons */}
+        <div className="absolute top-[50%] -left-36 group-hover:left-0 z-10 group-hover:duration-400 group-hover:transition-all w-12 h-10 text-accent rounded-r-full font-bold bg-secondary grid place-items-center cursor-pointer button-prev-slide">
+          <GoArrowLeft />
         </div>
-      ))}
-    </div>
+        <div className="absolute top-[50%] -right-36 group-hover:right-0 z-10 group-hover:duration-400 group-hover:transition-all w-12 h-10 text-accent rounded-l-full font-bold bg-secondary grid place-items-center cursor-pointer button-next-slide">
+          <GoArrowRight />
+        </div>
+      </Swiper>
+    </section>
   );
 }

@@ -40,7 +40,7 @@ export const metadata = {
 };
 export default function AboutUs() {  
   return (
-    <section className="about-area py-24 bg-white">
+    <section className="about-area pb-24  text-primary dark:bg-secondary dark:text-white">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Side - Images */}
@@ -87,9 +87,9 @@ export default function AboutUs() {
           <div>
             {/* Section Heading */}
             <div>
-              <div className="flex items-center gap-2 text-secondary font-semibold uppercase underline text-xl">
+              <div className="flex items-center gap-2 font-semibold uppercase underline text-xl">
                 <FaBookOpenReader />
-                <span className="">About Us</span>
+                <span className="text-secondary">About Us</span>
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-800 my-6 leading-snug">
                 Our <span className="text-secondary">Education System</span> Inspires You More.
@@ -139,7 +139,7 @@ export default function AboutUs() {
                 </div>
               </div>
 
-              <div className="bg-gray-50 border-l-4 border-yellow-400 p-5 rounded-lg relative">
+              <div className="bg-gray-50 dark:bg-black border-l-4 border-yellow-400 p-5 rounded-lg relative">
                 <p className="text-gray-700 text-sm leading-relaxed">
                   It is a long established fact that a reader will be distracted by the readable content of a page
                   when looking at its layout.

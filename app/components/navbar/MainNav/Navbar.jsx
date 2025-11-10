@@ -12,6 +12,8 @@ import nav_logo from "../../../../public/assets/img/logo/logo.png";
 import { FaPencil } from "react-icons/fa6";
 import Link from "next/link";
 import Image from "next/image";
+import DarkModeBtn from "../DarkModeBtn/DarkModeBtn";
+import { get_school_record } from "@pages/api/school_info/school_info_Api";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,8 +42,9 @@ export default function Navbar() {
   };
 
   return (
-    <nav
-      className={`bg-white p-2 shadow-md w-full z-50 fixed transition-all duration-200 ${
+<div className="dark:bg-black dark:text-white">
+      <nav
+      className={` bg-accent dark:bg-black dark:text-white text-black p-2 shadow-md w-full z-50 fixed transition-all duration-200 ${
         sticky ? "top-0 mt-0" : "top-0 mt-12"
       }`}
     >
@@ -49,6 +52,7 @@ export default function Navbar() {
         {/* Logo */}
           <div>
       <Image
+        className="dark:brightness-150"
         src={nav_logo}
         alt="Logo"
         width={200}
@@ -63,6 +67,30 @@ export default function Navbar() {
             <li className="hover:text-red-600 cursor-pointer">Home</li>
           </Link>
 
+          <li className="relative group">
+            <button className="flex items-center gap-1 hover:text-red-600">
+              Courses <FaChevronDown className="text-xs mt-1" />
+            </button>
+            <ul className="absolute left-0 top-14 bg-black text-accent w-56 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 ease-in-out border-t-2 border-secondary">
+              <Link href={'/'}>
+                <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">
+                  Course -1
+                </li>
+              </Link>
+
+              <li className="relative group/submenu px-4 py-2 hover:bg-red-600 cursor-pointer flex justify-between items-center">
+                Multiple Courses
+                <FaChevronRight className="text-xs" />
+                <ul className="absolute left-full top-0 bg-black text-accent w-56 opacity-0 translate-x-2 invisible group-hover/submenu:opacity-100 group-hover/submenu:translate-x-0 group-hover/submenu:visible transition-all duration-300 ease-in-out">
+                  <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Multi - 1</li>
+                  <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Multi - 2</li>
+                  <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Multi - 3</li>
+                </ul>
+              </li>
+
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Course -2</li>
+            </ul>
+          </li>
           <li className="relative group">
             <button className="flex items-center gap-1 hover:text-red-600">
               Admissions <FaChevronDown className="text-xs mt-1" />
@@ -91,10 +119,37 @@ export default function Navbar() {
 
           <li className="hover:text-red-600 cursor-pointer">Academics</li>
           <li className="hover:text-red-600 cursor-pointer">Blog</li>
-          <li className="hover:text-red-600 cursor-pointer">Pages</li>
-          <li className="hover:text-red-600 cursor-pointer">Contact</li>
+          <li className="relative group">
+            <button className="flex items-center gap-1 hover:text-red-600">
+              Page <FaChevronDown className="text-xs mt-1" />
+            </button>
+            <ul className="absolute left-0 top-14 bg-black text-accent w-56 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 ease-in-out border-t-2 border-secondary">
+              <Link href={'/'}>
+                <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">
+                  About Us
+                </li>
+              </Link>
+
+              <li className="relative group/submenu px-4 py-2 hover:bg-red-600 cursor-pointer flex justify-between items-center">
+                Events
+                <FaChevronRight className="text-xs" />
+                <ul className="absolute left-full top-0 bg-black text-accent w-56 opacity-0 translate-x-2 invisible group-hover/submenu:opacity-100 group-hover/submenu:translate-x-0 group-hover/submenu:visible transition-all duration-300 ease-in-out">
+                  <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Campus Tour</li>
+                  <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Campus Life</li>
+                  <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Notice Board</li>
+                  <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Student Activities</li>
+                </ul>
+              </li>
+
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Gallery</li>
+            </ul>
+          </li>
+          <Link href={"/contactUs"}><li className="hover:text-red-600 cursor-pointer">Contact</li></Link>
           <li className="hover:text-red-600 cursor-pointer">
             <FaSearch />
+          </li>
+          <li className="hover:text-red-600 cursor-pointer">
+            <DarkModeBtn />
           </li>
           <li className="text-accent bg-secondary py-2 px-3 rounded-t-3xl rounded-br-3xl cursor-pointer flex items-center gap-2">
             <FaPencil /> Apply Now
@@ -176,11 +231,15 @@ export default function Navbar() {
           <li className="hover:text-red-600 cursor-pointer">
             <FaSearch />
           </li>
+          <li className="hover:text-red-600 cursor-pointer">
+            <DarkModeBtn />
+          </li>
           <li className="text-accent bg-secondary py-2 px-3 rounded-t-3xl rounded-br-3xl cursor-pointer flex items-center gap-2 justify-center">
             <FaPencil /> Apply Now
           </li>
         </ul>
       </div>
     </nav>
+</div>
   );
 }

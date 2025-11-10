@@ -13,7 +13,7 @@ export default function OurCourse() {
     "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.";
 
   return (
-    <section className="bg-accent py-20">
+    <section className="py-20">
       <Container>
         {/* Heading Section */}
         <div className="text-center max-w-2xl mx-auto mb-12">
@@ -31,7 +31,7 @@ export default function OurCourse() {
           {coursesData.map((course) => (
             <div
               key={course.id}
-              className="bg-accent shadow-xl overflow-hidden hover:shadow-2xl transition duration-300 p-5 rounded-t-3xl rounded-br-3xl"
+              className="dark:bg-dark dark:text-accent shadow-xl overflow-hidden hover:shadow-2xl transition duration-300 p-5 rounded-t-3xl rounded-br-3xl"
             >
               {/* Image Section */}
               <div className="relative group">

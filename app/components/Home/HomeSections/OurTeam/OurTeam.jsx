@@ -45,13 +45,13 @@ const teamData = [
 export default function OurTeam() {
   return (
    <Link href={"/ourTeamDetails"}>
-     <section className="py-16 bg-accent text-center">
+     <section className="py-16 text-center">
       {/* Heading Section */}
       <div className="max-w-md mx-auto mb-10">
         <p className="text-secondary font-semibold uppercase tracking-widest flex justify-center items-center gap-2 underline">
           <FaBookOpen /> Our Teachers
         </p>
-        <h2 className="text-3xl my-3 md:text-4xl font-bold text-gray-900">
+        <h2 className="text-3xl my-3 md:text-4xl font-bold text-gray-900 dark:text-white">
           Meet With Our <span className="text-secondary">Teachers</span>
         </h2>
         <p className="text-gray-500 mt-2 text-sm">
@@ -65,7 +65,7 @@ export default function OurTeam() {
         {teamData.map((member) => (
           <div
             key={member.id}
-            className="relative bg-accent rounded-t-3xl rounded-br-3xl p-4 overflow-hidden shadow-lg group transition-all duration-500 hover:-translate-y-2"
+            className="relative rounded-t-3xl rounded-br-3xl p-4 overflow-hidden shadow-lg group transition-all duration-500 hover:-translate-y-2"
           >
             {/* Optimized Image */}
             <Image
@@ -77,40 +77,36 @@ export default function OurTeam() {
 
             {/* Hover Social Icons */}
             <div className="absolute top-0 right-0 h-full w-0 bg-black/60 flex flex-col items-center justify-center gap-4 opacity-0 group-hover:opacity-100 group-hover:w-16 transition-all duration-500 ease-in-out">
-              <a
-                href="#"
+              <button
                 aria-label="Facebook"
                 className="text-accent hover:text-secondary transition-colors"
               >
                 <FaFacebookF size={18} />
-              </a>
-              <a
-                href="#"
+              </button>
+              <button
                 aria-label="WhatsApp"
                 className="text-accent hover:text-secondary transition-colors"
               >
                 <FaWhatsapp size={18} />
-              </a>
-              <a
-                href="#"
+              </button>
+              <button
                 aria-label="LinkedIn"
                 className="text-accent hover:text-secondary transition-colors"
               >
                 <FaLinkedinIn size={18} />
-              </a>
-              <a
-                href="#"
+              </button>
+              <button
                 aria-label="YouTube"
                 className="text-accent hover:text-secondary transition-colors"
               >
                 <FaYoutube size={18} />
-              </a>
+              </button>
             </div>
 
             {/* Content */}
             <div className="flex justify-between pt-2">
               <div>
-                <h3 className="font-semibold text-gray-900 text-lg">
+                <h3 className="font-semibold text-lg">
                   {member.name}
                 </h3>
                 <p className="text-xs uppercase tracking-wider text-primary">

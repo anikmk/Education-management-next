@@ -145,13 +145,13 @@ export default function Footer() {
       {/* === Copyright Section === */}
       <div className="border-t border-gray-700 py-4 relative z-10">
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
-          <p className="hover:text-blue-400 transition-colors duration-300">
+          <div className="hover:text-blue-400 transition-colors duration-300">
             &copy; {new Date().getFullYear()}{" "}
             <p className="text-blue-400 hover:underline">
               Eduka
             </p>{" "}
             — All Rights Reserved.
-          </p>
+          </div>
 
           <div className="flex items-center gap-4">
             {social_media_icon.map((icon) => (

@@ -7,7 +7,7 @@ import Image from "next/image";
 export default function OurBlogs() {
     const course_title_des = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
   return (
-        <div className="bg-accent">
+        <div className="pt-12">
       <Container>
         {/* Heading Section */}
         <div className="text-center max-w-2xl mx-auto mb-12">
@@ -15,7 +15,7 @@ export default function OurBlogs() {
             <FaBookOpen />  Our Blog
           </span>
           <h2 className="text-5xl font-bold mt-3">
-            Latest News &<span className="text-secondary">Blog</span>
+            Latest News & <span className="text-secondary">Blog</span>
           </h2>
           <p className="text-gray-600 mt-3">
             {course_title_des}
@@ -27,7 +27,7 @@ export default function OurBlogs() {
           {blogsData.map((course) => (
             <div
               key={course.id}
-              className="bg-accent shadow-xl overflow-hidden hover:shadow-xl transition duration-300 p-5 rounded-t-3xl rounded-br-3xl"
+              className="shadow-xl overflow-hidden hover:shadow-xl transition duration-300 p-5 rounded-t-3xl rounded-br-3xl"
             >
               {/* Image Section */}
               <div className="relative group ">
