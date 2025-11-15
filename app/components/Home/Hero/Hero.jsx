@@ -9,9 +9,13 @@ import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import "swiper/css";
 import "swiper/css/navigation";
 
+import "aos/dist/aos.css";
+import AOS from "aos";
+
 import sliderImage_1 from "../../../../public/assets/img/slider/slider-1.jpg";
 import sliderImage_2 from "../../../../public/assets/img/slider/slider-2.jpg";
 import sliderImage_3 from "../../../../public/assets/img/slider/slider-3.jpg";
+import { useEffect } from "react";
 
 const slider_data = [
   {
@@ -47,6 +51,15 @@ const slider_data = [
 ];
 
 export default function Hero() {
+   useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: "ease-in-out",
+      once: false,
+      delay: 60,
+    });
+  }, []);
+
   return (
     <section className="relative w-full h-screen overflow-hidden group">
       <Swiper
@@ -79,21 +92,24 @@ export default function Hero() {
 
               <div className="absolute inset-0 bg-primary/40 flex flex-col justify-center px-10 md:px-24 text-white">
                 <div className="max-w-xl space-y-5 animate-fadeIn">
-                  <h4 className="text-lg md:text-xl font-semibold text-secondary uppercase tracking-wide underline">
+                  <h4 data-aos="fade-down" className="text-lg md:text-xl font-semibold text-secondary uppercase tracking-wide underline">
                     {item.sub_heading}
                   </h4>
-                  <h2 className="text-2xl md:text-4xl font-bold capitalize leading-tight">
+                  <h2 data-aos="zoom-in"data-aos-delay="200" className="text-2xl md:text-4xl font-bold capitalize leading-tight">
                     {item.heading}
                   </h2>
-                  <p className="text-base md:text-md opacity-90 capitalize">
+                  <p data-aos="fade-up"
+                    data-aos-delay="300" className="text-base md:text-md opacity-90 capitalize">
                     {item.slider_desc}
                   </p>
 
                   <div className="flex flex-wrap gap-4 mt-6">
-                    <button className="bg-secondary text-white px-5 py-2 rounded-r-full rounded-tl-full hover:bg-accent hover:text-secondary transition-all duration-300 flex items-center gap-2">
+                    <button data-aos="fade-up"
+                      data-aos-delay="350" className="bg-secondary text-white px-5 py-2 rounded-r-full rounded-tl-full hover:bg-accent hover:text-secondary transition-all duration-300 flex items-center gap-2">
                       {item.btn_text1} <FaArrowRightLong />
                     </button>
-                    <button className="bg-secondary text-white px-5 py-3 rounded-r-full rounded-tl-full hover:bg-accent hover:text-secondary transition-all duration-300 flex items-center gap-2">
+                    <button data-aos="fade-up"
+                      data-aos-delay="450" className="bg-secondary text-white px-5 py-3 rounded-r-full rounded-tl-full hover:bg-accent hover:text-secondary transition-all duration-300 flex items-center gap-2">
                       {item.btn_text2} <FaArrowRightLong />
                     </button>
                   </div>

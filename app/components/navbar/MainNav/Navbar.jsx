@@ -1,25 +1,22 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import {
-  FaBars,
-  FaTimes,
-  FaChevronDown,
-  FaChevronRight,
-  FaSearch,
-} from "react-icons/fa";
+import {FaBars,FaTimes,FaChevronDown,FaChevronRight,FaSearch,} from "react-icons/fa";
 import nav_logo from "../../../../public/assets/img/logo/logo.png";
 import { FaPencil } from "react-icons/fa6";
 import Link from "next/link";
 import Image from "next/image";
 import DarkModeBtn from "../DarkModeBtn/DarkModeBtn";
-import { get_school_record } from "@pages/api/school_info/school_info_Api";
+import LanguageToggleBtn from "../LanguageToggle/LanguageToggleBtn";
+import { useLanguage } from "@pages/Context/LanguageContext";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [activeSubmenu, setActiveSubmenu] = useState(null);
   const [sticky, setSticky] = useState(false);
+  const {language} = useLanguage();
+  console.log(language)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,12 +61,12 @@ export default function Navbar() {
         {/* ===== Desktop Menu ===== */}
         <ul className="hidden md:flex items-center space-x-6 font-semibold relative">
           <Link href={"/"}>
-            <li className="hover:text-red-600 cursor-pointer">Home</li>
+            <li className="hover:text-red-600 cursor-pointer">{language === "en" ? "Home":"হোম"}</li> 
           </Link>
 
           <li className="relative group">
             <button className="flex items-center gap-1 hover:text-red-600">
-              Courses <FaChevronDown className="text-xs mt-1" />
+              {language === "en" ? "Courses":"কোর্স"} <FaChevronDown className="text-xs mt-1" />
             </button>
             <ul className="absolute left-0 top-14 bg-black text-accent w-56 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 ease-in-out border-t-2 border-secondary">
               <Link href={'/'}>
@@ -93,7 +90,7 @@ export default function Navbar() {
           </li>
           <li className="relative group">
             <button className="flex items-center gap-1 hover:text-red-600">
-              Admissions <FaChevronDown className="text-xs mt-1" />
+              {language === "en" ? "Admission":"ভর্তি"} <FaChevronDown className="text-xs mt-1" />
             </button>
             <ul className="absolute left-0 top-14 bg-black text-accent w-56 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 ease-in-out border-t-2 border-secondary">
               <Link href={'/admission/howToApply'}>
@@ -117,11 +114,11 @@ export default function Navbar() {
             </ul>
           </li>
 
-          <li className="hover:text-red-600 cursor-pointer">Academics</li>
-          <li className="hover:text-red-600 cursor-pointer">Blog</li>
+          <li className="hover:text-red-600 cursor-pointer">{language === "en" ? "Academics":"একাডেমিক"}</li>
+          <li className="hover:text-red-600 cursor-pointer">{language === "en" ? "Blog":"ব্লগ"}</li>
           <li className="relative group">
             <button className="flex items-center gap-1 hover:text-red-600">
-              Page <FaChevronDown className="text-xs mt-1" />
+              {language === "en" ? "Page":"পেইজ"} <FaChevronDown className="text-xs mt-1" />
             </button>
             <ul className="absolute left-0 top-14 bg-black text-accent w-56 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 ease-in-out border-t-2 border-secondary">
               <Link href={'/'}>
@@ -144,12 +141,15 @@ export default function Navbar() {
               <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Gallery</li>
             </ul>
           </li>
-          <Link href={"/contactUs"}><li className="hover:text-red-600 cursor-pointer">Contact</li></Link>
+          <Link href={"/contactUs"}><li className="hover:text-red-600 cursor-pointer">{language === "en" ? "Contact":"যোগাযোগ"}</li></Link>
           <li className="hover:text-red-600 cursor-pointer">
-            <FaSearch />
+            <FaSearch /> 
           </li>
           <li className="hover:text-red-600 cursor-pointer">
             <DarkModeBtn />
+          </li>
+          <li className="hover:text-red-600 cursor-pointer">
+            <LanguageToggleBtn />
           </li>
           <li className="text-accent bg-secondary py-2 px-3 rounded-t-3xl rounded-br-3xl cursor-pointer flex items-center gap-2">
             <FaPencil /> Apply Now
