@@ -1,7 +1,12 @@
-import axiosPublic from "@pages/hooks/useAxiosPublic";
+export async function get_school_record(api) {
+  const res = await fetch(
+    `http://pathshala.cloud/pathshala_2011_app/web/get_institute_records/${api}`,
+    {
+      cache: "no-store",
+    }
+  );
 
+  if (!res.ok) return null;
 
-export const get_school_record = async(api) => {
-    const {data} = await axiosPublic.get(`get_institute_records/${api}`);
-    return data;
+  return res.json();
 }

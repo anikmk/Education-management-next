@@ -16,7 +16,6 @@ export default function Navbar() {
   const [activeSubmenu, setActiveSubmenu] = useState(null);
   const [sticky, setSticky] = useState(false);
   const {language} = useLanguage();
-  console.log(language)
 
   useEffect(() => {
     const handleScroll = () => {

@@ -1,22 +1,11 @@
-"use client"
+
 import { FaSquareFacebook } from "react-icons/fa6";
 import { FaLinkedin, FaWhatsappSquare } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa6";
 import Container from "@components/Shared/Container/Container";
-import { useLanguage } from "@pages/Context/LanguageContext";
-import { get_school_record } from "@pages/api/school_info/school_info_Api";
-import { useQuery } from "@tanstack/react-query";
 
-export default function TopNav() {
-  const {language} = useLanguage();
-
-  // const api = process.env.NEXT_PUBLIC_PATHSHALA_SCHOOL_CODE; 
-  // const {data=[],isLoading} = useQuery({ 
-  //   queryKey: ['studentsInfo'], 
-  //   queryFn: async()=> await get_school_record(api) 
-  //  })
-  //  if(isLoading) return <div>loading..</div>
-//  console.log(data)
+export default async function TopNav({schoolData}) {
+console.log(schoolData)
   return (
     <div className="flex flex-col md:flex-row text-accent">
       
@@ -24,7 +13,7 @@ export default function TopNav() {
       <div className="bg-secondary w-full md:w-[30%] p-3 flex justify-center">
         <Container>
           <div className="flex items-center justify-center gap-3 text-lg flex-wrap md:flex-nowrap">
-            <span> {language === "en" ? "Follow Us":"অনুসরণ করুন"}</span>
+            <span> Follow Us</span>
             <FaSquareFacebook className="text-accent hover:scale-110 duration-300" />
             <FaLinkedin className="text-accent hover:scale-110 duration-300" />
             <FaWhatsappSquare className="text-accent hover:scale-110 duration-300" />
