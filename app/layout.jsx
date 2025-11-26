@@ -5,9 +5,8 @@ import Navbar from "@components/navbar/MainNav/Navbar";
 import Footer from "@components/Footer/Footer";
 import { ThemeProvider } from "next-themes";
 import { LanguageProvider } from "./Context/LanguageContext";
-import {QueryClient,QueryClientProvider,} from '@tanstack/react-query'
-import QueryProvider from "./utils/QueryProvider";
-const queryClient = new QueryClient();
+import NavbarServer from "./components/navbar/MainNav/NavbarServer";
+
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
@@ -24,19 +23,17 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
 
-         <QueryProvider>
           <LanguageProvider>
           <ThemeProvider
           enableSystem={true}
           attribute="class"
         >
           <TopNav />
-          <Navbar />
+          <NavbarServer />
           {children}
           <Footer />
         </ThemeProvider>
         </LanguageProvider>
-         </QueryProvider>
 
       </body>
     </html>

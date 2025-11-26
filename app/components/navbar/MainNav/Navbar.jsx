@@ -2,20 +2,25 @@
 
 import { useState, useEffect } from "react";
 import {FaBars,FaTimes,FaChevronDown,FaChevronRight,FaSearch,} from "react-icons/fa";
-import nav_logo from "../../../../public/assets/img/logo/logo.png";
 import { FaPencil } from "react-icons/fa6";
 import Link from "next/link";
 import Image from "next/image";
 import DarkModeBtn from "../DarkModeBtn/DarkModeBtn";
 import LanguageToggleBtn from "../LanguageToggle/LanguageToggleBtn";
-import { useLanguage } from "@pages/Context/LanguageContext";
+import Cookies from "js-cookie";
 
-export default function Navbar() {
+export default function Navbar({data}) {
+  
+  const logoUrl_1 = data?.result?.site_path;
+  const logoUrl_2 = data?.result?.logo;
+  const nav_logo = logoUrl_1 + logoUrl_2
+
+  const language = Cookies.get("lang") || "en";
+
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [activeSubmenu, setActiveSubmenu] = useState(null);
   const [sticky, setSticky] = useState(false);
-  const {language} = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,15 +51,20 @@ export default function Navbar() {
     >
       <div className="container mx-auto flex justify-between items-center px-4 py-3">
         {/* Logo */}
-          <div>
+          <div className="flex items-center gap-1.5">
       <Image
         className="dark:brightness-150"
         src={nav_logo}
-        alt="Logo"
-        width={200}
-        height={200}
+        alt={`${data?.result?.name} - logo`}
+        width={50}
+        height={50}
         priority 
       />
+      <div>
+        <p className="text-xs text-slate-500">ESTD: {data?.result?.estd}</p>
+        <h2 className="text-lg font-semibold">{data?.result?.name}</h2>
+        <p className="text-xs text-slate-500">Address: {data?.result?.address}</p>
+      </div>
     </div>
 
         {/* ===== Desktop Menu ===== */}
