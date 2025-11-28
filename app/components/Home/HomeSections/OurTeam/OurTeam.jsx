@@ -1,13 +1,14 @@
-"use client"
 import Image from "next/image";
-import { FaFacebookF, FaWhatsapp, FaLinkedinIn, FaYoutube } from "react-icons/fa";
 import { FaBookOpen } from "react-icons/fa6";
-import { FiShare2 } from "react-icons/fi";
-import team_member_1 from "../../../../../public/assets/img/team/01.jpg";
-import team_member_2 from "../../../../../public/assets/img/team/02.jpg";
-import team_member_3 from "../../../../../public/assets/img/team/03.jpg";
-import team_member_4 from "../../../../../public/assets/img/team/04.jpg";
-import Link from "next/link";
+import TeamSocialIcon from "./TeamSocialIcon";
+import { get_teachers } from "@/api/teacher/teacher_info_api";
+import AllTeachersBtn from "./AllTeachersBtn";
+import TeacherDetailsBtn from "./TeacherDetailsBtn";
+import { get_school_record } from "@/api/school_info/school_info_Api";
+
+// Avatar images
+import maleAvatar from "../../../../../public/assets/img/avatar/teacher-male.jpg";
+import femaleAvatar from "../../../../../public/assets/img/avatar/teacher-female.jpg";
 
 export const metadata = {
   title: "Our Teachers | Meet Our Expert Instructors",
@@ -15,37 +16,16 @@ export const metadata = {
     "Get to know our professional and experienced teachers who are dedicated to helping students achieve their learning goals.",
 };
 
-const teamData = [
-  {
-    id: 1,
-    name: "Angela T. Vigil",
-    title: "Associate Professor",
-    img: team_member_1,
-  },
-  {
-    id: 2,
-    name: "Frank A. Mitchell",
-    title: "Associate Professor",
-    img: team_member_2,
-  },
-  {
-    id: 3,
-    name: "Susan D. Lunsford",
-    title: "CEO & Founder",
-    img: team_member_3,
-  },
-  {
-    id: 4,
-    name: "Dennis A. Pruitt",
-    title: "Associate Professor",
-    img: team_member_4,
-  },
-];
+export default async function OurTeam() {
+  const api = process.env.NEXT_PUBLIC_PATHSHALA_SCHOOL_CODE;
+  const image_base_url = process.env.NEXT_PUBLIC_TEACHER_IMAGE_BASEURL;
 
-export default function OurTeam() {
+  const teachers_data = await get_teachers(api);
+  const school_record = await get_school_record(api);
+  const institute_eiin = school_record?.result?.eiin;
+
   return (
-   <Link href={"/ourTeamDetails"}>
-     <section className="py-16 text-center">
+    <section className="py-16 text-center">
       {/* Heading Section */}
       <div className="max-w-md mx-auto mb-10">
         <p className="text-secondary font-semibold uppercase tracking-widest flex justify-center items-center gap-2 underline">
@@ -62,66 +42,56 @@ export default function OurTeam() {
 
       {/* Team Cards */}
       <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4">
-        {teamData.map((member) => (
-          <div
-            key={member.id}
-            className="relative rounded-t-3xl rounded-br-3xl p-4 overflow-hidden shadow-lg group transition-all duration-500 hover:-translate-y-2"
-          >
-            {/* Optimized Image */}
-            <Image
-              src={member.img}
-              alt={member.name}
-              placeholder="blur"
-              className="w-full h-72 object-cover rounded-t-3xl rounded-br-3xl"
-            />
+        {teachers_data?.slice(0, 8)?.map((teacher) => {
+          const finalImageSrc =
+            teacher?.img_ext && teacher?.img_ext.trim() !== ""
+              ? `${image_base_url}/${institute_eiin}/teacher/${teacher.teacher_code}${teacher.img_ext}`
+              : teacher?.gender?.toLowerCase() === "male"
+              ? maleAvatar
+              : femaleAvatar;
 
-            {/* Hover Social Icons */}
-            <div className="absolute top-0 right-0 h-full w-0 bg-black/60 flex flex-col items-center justify-center gap-4 opacity-0 group-hover:opacity-100 group-hover:w-16 transition-all duration-500 ease-in-out">
-              <button
-                aria-label="Facebook"
-                className="text-accent hover:text-secondary transition-colors"
-              >
-                <FaFacebookF size={18} />
-              </button>
-              <button
-                aria-label="WhatsApp"
-                className="text-accent hover:text-secondary transition-colors"
-              >
-                <FaWhatsapp size={18} />
-              </button>
-              <button
-                aria-label="LinkedIn"
-                className="text-accent hover:text-secondary transition-colors"
-              >
-                <FaLinkedinIn size={18} />
-              </button>
-              <button
-                aria-label="YouTube"
-                className="text-accent hover:text-secondary transition-colors"
-              >
-                <FaYoutube size={18} />
-              </button>
-            </div>
+          return (
+            <div
+              key={teacher?.teacher_code}
+              className="relative rounded-t-3xl rounded-br-3xl p-4 overflow-hidden shadow-lg group transition-all duration-500 hover:-translate-y-2"
+            >
+              {/* Image */}
+              <Image
+                src={finalImageSrc}
+                alt={teacher.teacher_name}
+                width={300}
+                height={200}
+                className="w-full h-72 object-cover rounded-t-3xl rounded-br-3xl"
+              />
 
-            {/* Content */}
-            <div className="flex justify-between pt-2">
-              <div>
-                <h3 className="font-semibold text-lg">
-                  {member.name}
-                </h3>
-                <p className="text-xs uppercase tracking-wider text-primary">
-                  {member.title}
-                </p>
-              </div>
-              {/* Floating share icon */}
-              <div className="bg-primary text-accent p-2 w-10 h-10 flex items-center justify-center rounded-full shadow-md ml-4">
-                <FiShare2 />
+              {/* Hover Social Icons */}
+              <TeamSocialIcon />
+
+              {/* Info Section */}
+              <div className="flex justify-between pt-2 items-center">
+                <div>
+                  <h3 className="font-semibold text-md">
+                    {teacher?.teacher_name}
+                  </h3>
+                  <p className="text-xs uppercase tracking-wider text-primary">
+                    {teacher?.designation}
+                  </p>
+                </div>
+
+                {/* Details Button */}
+                <div className="z-10">
+                  <TeacherDetailsBtn teacher_code={teacher?.teacher_code} />
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
+      </div>
+
+      {/* Show all teachers */}
+      <div>
+        <AllTeachersBtn />
       </div>
     </section>
-   </Link>
   );
 }

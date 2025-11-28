@@ -10,7 +10,6 @@ import LanguageToggleBtn from "../LanguageToggle/LanguageToggleBtn";
 import Cookies from "js-cookie";
 
 export default function Navbar({data}) {
-  
   const logoUrl_1 = data?.result?.site_path;
   const logoUrl_2 = data?.result?.logo;
   const nav_logo = logoUrl_1 + logoUrl_2
@@ -43,7 +42,7 @@ export default function Navbar({data}) {
   };
 
   return (
-<div className="dark:bg-black dark:text-white">
+<div className="dark:bg-black dark:text-white z-100">
       <nav
       className={` bg-accent dark:bg-black dark:text-white text-black p-2 shadow-md w-full z-50 fixed transition-all duration-200 ${
         sticky ? "top-0 mt-0" : "top-0 mt-12"

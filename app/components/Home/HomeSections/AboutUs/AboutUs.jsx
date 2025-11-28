@@ -7,7 +7,10 @@ import aboutImg3 from "../../../../../public/assets/img/about/03.jpg";
 import exchance_idea from "../../../../../public/assets/img/icon/exchange-idea.svg";
 import open_book from "../../../../../public/assets/img/icon/open-book.svg";
 import global_education from "../../../../../public/assets/img/icon/global-education.svg";
-import Button from "@components/Shared/Button/Button";
+import { about_us_data } from "@/api/about_us/about_us_api";
+import AboutBtn from "./AboutBtn";
+
+
 
 // meta data
 export const metadata = {
@@ -38,7 +41,15 @@ export const metadata = {
     type: "website",
   },
 };
-export default function AboutUs() {  
+export default async function AboutUs() {  
+
+  const api = process.env.NEXT_PUBLIC_PATHSHALA_SCHOOL_CODE;
+  const about_data = await about_us_data(api);
+  const fullDescription = about_data?.result[0]?.news_details;
+  const shortDescription = fullDescription?.slice(0, 250) + "...";
+
+  const about_page_id = about_data?.result[0]?.news_id
+  
   return (
     <section className="about-area pb-24  text-primary dark:bg-secondary dark:text-white">
       <div className="container mx-auto px-4 lg:px-8">
@@ -87,9 +98,9 @@ export default function AboutUs() {
           <div>
             {/* Section Heading */}
             <div>
-              <div className="flex items-center gap-2 font-semibold uppercase underline text-xl">
+              <div className="flex items-center gap-2 font-semibold uppercase text-xl">
                 <FaBookOpenReader />
-                <span className="text-secondary">About Us</span>
+                <span className="text-secondary">About Institute</span>
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-800 my-6 leading-snug">
                 Our <span className="text-secondary">Education System</span> Inspires You More.
@@ -97,11 +108,9 @@ export default function AboutUs() {
             </div>
 
             {/* Description */}
-            <p className="text-gray-600 leading-relaxed mb-8">
-              There are many variations of passages available, but the majority have suffered alteration
-              in some form by injected humour or randomised words which do not look even slightly believable.
-              If you are going to use a passage, make sure it looks natural.
-            </p>
+            <div className="text-gray-600 leading-relaxed mb-8 prose" dangerouslySetInnerHTML={{ __html: shortDescription }}>
+             
+            </div>
 
             {/* Features + Quote */}
             <div className="grid md:grid-cols-2 gap-7 mb-16">
@@ -150,7 +159,7 @@ export default function AboutUs() {
 
             {/* Bottom Buttons */}
             <div className="flex flex-wrap items-center gap-6">
-              <Button btnText={"Discover More"}/>
+              <AboutBtn  btnText={"Details"} page_id={about_page_id}/>
 
               <div className="flex items-center gap-3">
                 <div className="bg-neutral p-3 rounded-full">
