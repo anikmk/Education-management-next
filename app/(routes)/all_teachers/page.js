@@ -7,11 +7,11 @@ import { get_school_record } from "@/api/school_info/school_info_Api";
 import maleAvatar from "../../../public/assets/img/avatar/teacher-male.jpg"
 import femaleAvatar from "../../../public/assets/img/avatar/teacher-female.jpg"
 export default async function page() {
-      const image_base_url = process.env.NEXT_PUBLIC_TEACHER_IMAGE_BASEURL;
+      const image_base_url = process.env.NEXT_PUBLIC_IMAGE_BASEURL;
       const api = process.env.NEXT_PUBLIC_PATHSHALA_SCHOOL_CODE;
       const allTeachers = await get_teachers(api);
-        const school_record = await get_school_record(api);
-        const institute_eiin = school_record?.result?.eiin;
+      const school_record = await get_school_record(api);
+      const institute_eiin = school_record?.result?.eiin;
 
   return (
     <div>

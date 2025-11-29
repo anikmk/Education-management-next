@@ -18,7 +18,7 @@ export const metadata = {
 
 export default async function OurTeam() {
   const api = process.env.NEXT_PUBLIC_PATHSHALA_SCHOOL_CODE;
-  const image_base_url = process.env.NEXT_PUBLIC_TEACHER_IMAGE_BASEURL;
+  const image_base_url = process.env.NEXT_PUBLIC_IMAGE_BASEURL;
 
   const teachers_data = await get_teachers(api);
   const school_record = await get_school_record(api);

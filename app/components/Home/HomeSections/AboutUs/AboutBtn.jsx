@@ -4,7 +4,6 @@ import Link from "next/link"
 import { FaArrowRightLong } from "react-icons/fa6"
 
 export default function AboutBtn({btnText,page_id}) {
-    console.log(page_id)
   return (
     <div>
       <Link href={'/about'}>

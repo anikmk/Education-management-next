@@ -1,5 +1,5 @@
 
-import Hero from "@components/Home/Hero/Hero";
+
 import { AboutUs, ChoiceUs } from "@components/Home/HomeSections";
 import Counter from "@components/Home/HomeSections/Counter/Counter";
 import Facilities from "@components/Home/HomeSections/Facilites/Facilites";
@@ -11,12 +11,13 @@ import DepartmentSlider from "@components/Home/HomeSections/OurDepartment/OurDep
 import OurSkill from "@components/Home/HomeSections/OurSkills/OurSkills";
 import OurTeam from "@components/Home/HomeSections/OurTeam/OurTeam";
 import UpComingEvents from "@components/Home/HomeSections/UpcomingEvents/UpcomingEvents";
+import HeroServer from "./components/Home/Hero/HeroServer";
 
 export default function Home() {
   return (
     <div className="">
         <div>
-        <Hero />
+        <HeroServer />
         <Facilities />
       </div>
      <AboutUs />
