@@ -1,11 +1,19 @@
 
 import Container from "@components/Shared/Container/Container";
 import { FaBookOpen, FaRegBookmark, FaLink } from "react-icons/fa";
-import { blogsData } from "./blogsData";
 import Image from "next/image";
+import NewsDetailsBtn from "./NewsDetailsBtn";
+import { get_news_or_blogs } from "@/api/news_and_blogs/newsAndBlogs";
+import { get_school_record } from "@/api/school_info/school_info_Api";
 
-export default function OurBlogs() {
+export default async function NewsAndBlogs() {
+    const api = process.env.NEXT_PUBLIC_PATHSHALA_SCHOOL_CODE;
+    const img_base_url = process.env.NEXT_PUBLIC_IMAGE_BASEURL;
+    const schoolRecord = await get_school_record(api);
+    const newsData = await get_news_or_blogs(api);
+
     const course_title_des = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
+
   return (
         <div className="pt-12">
       <Container>
@@ -24,17 +32,19 @@ export default function OurBlogs() {
 
         {/* Course Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogsData.map((course) => (
+          {newsData.map((news) => (
             <div
-              key={course.id}
-              className="shadow-xl overflow-hidden hover:shadow-xl transition duration-300 p-5 rounded-t-3xl rounded-br-3xl"
+              key={news.id}
+              className="shadow-xl overflow-hidden hover:shadow-xl transition duration-300 p-3 rounded-t-3xl rounded-br-3xl"
             >
               {/* Image Section */}
               <div className="relative group ">
                 <div className="overflow-hidden">
                 <Image
-                  src={course.image}
-                  alt={course.title}
+                  src={`${img_base_url}/${schoolRecord?.result?.eiin}/site/documents/${news?.id}${news?.attachment}`}
+                  alt={news?.title_english}
+                  width={300}
+                  height={200}
                   className="w-full h-56 object-cover transform group-hover:scale-110 transition duration-500 rounded-t-3xl rounded-br-3xl z-0"
                 />
                 <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition duration-500 flex items-center justify-center">
@@ -48,7 +58,7 @@ export default function OurBlogs() {
                 
               </div>
               <span className="absolute top-4 -right-4 bg-secondary text-accent px-3 py-2 text-sm font-medium rounded-t-3xl rounded-br-3xl flex items-center gap-1 z-10">
-                  <FaRegBookmark /> {course.dead_line}
+                  <FaRegBookmark /> {news?.notice_date}
                 </span>
               </div>
 
@@ -56,15 +66,15 @@ export default function OurBlogs() {
               <div className="p-5">
                 <div className="flex justify-between items-center text-sm text-gray-500 mb-3">
                   <span className="flex items-center gap-2">
-                    <FaBookOpen className="text-secondary" /> {course.blog_creator_name}
+                    <FaBookOpen className="text-secondary" /> {news?.creator}
                   </span>
                   <span className="flex items-center gap-2">
-                    <FaBookOpen className="text-secondary" /> 0{course.numberOfComments}Comments
+                    <FaBookOpen className="text-secondary" /> 0 Comments
                   </span>
                 </div>
 
-                <h3 className="font-bold text-lg mb-2 hover:secondary cursor-pointer">{course.title}</h3>
-                <button>read more</button>
+                <h3 className="font-bold text-lg mb-2 hover:secondary cursor-pointer">{news.title_english}</h3>
+                <NewsDetailsBtn news_id={news?.id}/>
               </div>
             </div>
           ))}

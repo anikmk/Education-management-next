@@ -16,7 +16,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 
 export default function HeroClient({bannerInfo}) {
-  console.log(bannerInfo)
+
    useEffect(() => {
     AOS.init({
       duration: 800,
