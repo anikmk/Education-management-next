@@ -13,6 +13,8 @@ import UpComingEvents from "@components/Home/HomeSections/UpcomingEvents/Upcomin
 import HeroServer from "./components/Home/Hero/HeroServer";
 import NewsAndBlogs from "@/components/Home/HomeSections/NewsAndBlogs/NewsAndBlogs";
 import ChairmanSpeech from "./components/Home/HomeSections/ChairmanSpeech/ChairmanSpeech";
+import TeacherSpeech from "./components/Home/HomeSections/TeacherSpeech/TeacherSpeech";
+import SchoolCommittee from "./components/Home/HomeSections/SchoolCommittee/SchoolCommittee";
 
 export default function Home() {
   return (
@@ -23,10 +25,12 @@ export default function Home() {
       </div>
       <ChairmanSpeech />
      <AboutUs />
+     <TeacherSpeech />
      <Counter />
      <OurCourse />
      <LatestNews />
      <OurTeam />
+     <SchoolCommittee />
      <ChoiceUs />
      <UpComingEvents />
      <OurSkill />
