@@ -67,35 +67,63 @@ export default function Navbar({data}) {
     </div>
 
         {/* ===== Desktop Menu ===== */}
-        <ul className="hidden md:flex items-center space-x-6 font-semibold relative">
+        <ul className="hidden md:flex items-center space-x-4 font-semibold relative text-sm">
           <Link href={"/"}>
             <li className="hover:text-red-600 cursor-pointer">{language === "en" ? "Home":"হোম"}</li> 
           </Link>
+         <li className="relative group">
+            <button className="flex items-center gap-1 hover:text-red-600">
+              About <FaChevronDown className="text-xs mt-1" />
+            </button>
+            <ul className="absolute left-0 top-14 bg-black text-accent w-56 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 ease-in-out border-t-2 border-secondary">
+                <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">
+                  About Us</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">History</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Founder & Doner List</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Our Vission</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Campus Tour</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Achievements</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Honarable Chairman</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Our Principal</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Administrators</li>
+            </ul>
+          </li>
 
           <li className="relative group">
             <button className="flex items-center gap-1 hover:text-red-600">
-              {language === "en" ? "Courses":"কোর্স"} <FaChevronDown className="text-xs mt-1" />
+              Information <FaChevronDown className="text-xs mt-1" />
             </button>
             <ul className="absolute left-0 top-14 bg-black text-accent w-56 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 ease-in-out border-t-2 border-secondary">
               <Link href={'/'}>
                 <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">
-                  Course -1
+                  Administrators
                 </li>
               </Link>
-
-              <li className="relative group/submenu px-4 py-2 hover:bg-red-600 cursor-pointer flex justify-between items-center">
-                Multiple Courses
-                <FaChevronRight className="text-xs" />
-                <ul className="absolute left-full top-0 bg-black text-accent w-56 opacity-0 translate-x-2 invisible group-hover/submenu:opacity-100 group-hover/submenu:translate-x-0 group-hover/submenu:visible transition-all duration-300 ease-in-out">
-                  <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Multi - 1</li>
-                  <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Multi - 2</li>
-                  <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Multi - 3</li>
-                </ul>
-              </li>
-
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Course -2</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Statistics Report</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Govt. Approval Letter</li>
             </ul>
           </li>
+          <li className="relative group">
+            <button className="flex items-center gap-1 hover:text-red-600">
+              Academic <FaChevronDown className="text-xs mt-1" />
+            </button>
+            <ul className="absolute left-0 top-14 bg-black text-accent w-56 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 ease-in-out border-t-2 border-secondary">
+              <Link href={'/'}>
+                <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">
+                  Class Schedule
+                </li>
+              </Link>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Our Teachers</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Former Teachers</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Our Staffs</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Former Staffs</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Academic Rules</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Academic Calender</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Attendance Sheet</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Leave Information</li>
+            </ul>
+          </li>
+
           <li className="relative group">
             <button className="flex items-center gap-1 hover:text-red-600">
               {language === "en" ? "Admission":"ভর্তি"} <FaChevronDown className="text-xs mt-1" />
@@ -103,53 +131,58 @@ export default function Navbar({data}) {
             <ul className="absolute left-0 top-14 bg-black text-accent w-56 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 ease-in-out border-t-2 border-secondary">
               <Link href={'/admission/howToApply'}>
                 <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">
-                  How To Apply
+                  Why Study?
                 </li>
               </Link>
-
-              <li className="relative group/submenu px-4 py-2 hover:bg-red-600 cursor-pointer flex justify-between items-center">
-                Our Campus
-                <FaChevronRight className="text-xs" />
-                <ul className="absolute left-full top-0 bg-black text-accent w-56 opacity-0 translate-x-2 invisible group-hover/submenu:opacity-100 group-hover/submenu:translate-x-0 group-hover/submenu:visible transition-all duration-300 ease-in-out">
-                  <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Campus Tour</li>
-                  <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Campus Life</li>
-                  <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Notice Board</li>
-                  <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Student Activities</li>
-                </ul>
-              </li>
-
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Tuition Fees</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">How to apply</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Admission Test</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Admission Policy</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Registration System</li>
             </ul>
           </li>
 
-          <li className="hover:text-red-600 cursor-pointer">{language === "en" ? "Academics":"একাডেমিক"}</li>
-          <li className="hover:text-red-600 cursor-pointer">{language === "en" ? "Blog":"ব্লগ"}</li>
           <li className="relative group">
             <button className="flex items-center gap-1 hover:text-red-600">
-              {language === "en" ? "Page":"পেইজ"} <FaChevronDown className="text-xs mt-1" />
+              Students <FaChevronDown className="text-xs mt-1" />
             </button>
             <ul className="absolute left-0 top-14 bg-black text-accent w-56 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 ease-in-out border-t-2 border-secondary">
-              <Link href={'/'}>
-                <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">
-                  About Us
-                </li>
-              </Link>
-
-              <li className="relative group/submenu px-4 py-2 hover:bg-red-600 cursor-pointer flex justify-between items-center">
-                Events
-                <FaChevronRight className="text-xs" />
-                <ul className="absolute left-full top-0 bg-black text-accent w-56 opacity-0 translate-x-2 invisible group-hover/submenu:opacity-100 group-hover/submenu:translate-x-0 group-hover/submenu:visible transition-all duration-300 ease-in-out">
-                  <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Campus Tour</li>
-                  <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Campus Life</li>
-                  <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Notice Board</li>
-                  <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Student Activities</li>
-                </ul>
-              </li>
-
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Gallery</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Student List</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Tution Fees</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Mobile Banking</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Daily Activites</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Exam Schedule</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Student Uniform</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Exam System</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Rules and Regulation</li>
             </ul>
           </li>
-          <Link href={"/contactUs"}><li className="hover:text-red-600 cursor-pointer">{language === "en" ? "Contact":"যোগাযোগ"}</li></Link>
+          <li className="relative group">
+            <button className="flex items-center gap-1 hover:text-red-600">
+              Facilites <FaChevronDown className="text-xs mt-1" />
+            </button>
+            <ul className="absolute left-0 top-14 bg-black text-accent w-56 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 ease-in-out border-t-2 border-secondary">
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Library</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Play Ground</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Physics Lab</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Biology Lab</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">ICT Lab</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Chemistry Lab</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Extra Activites</li>
+            </ul>
+          </li>
+          <li className="relative group">
+            <button className="flex items-center gap-1 hover:text-red-600">
+              Result <FaChevronDown className="text-xs mt-1" />
+            </button>
+            <ul className="absolute left-0 top-14 bg-black text-accent w-56 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 ease-in-out border-t-2 border-secondary">
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Exam Result </li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Academic Result</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Evaluation Result</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Board Exam Result</li>
+            </ul>
+          </li>
+
+          <li className="hover:text-red-600 cursor-pointer">Contact</li>
           <li className="hover:text-red-600 cursor-pointer">
             <FaSearch /> 
           </li>
@@ -159,10 +192,13 @@ export default function Navbar({data}) {
           <li className="hover:text-red-600 cursor-pointer">
             <LanguageToggleBtn />
           </li>
-          <li className="text-accent bg-secondary py-2 px-3 rounded-t-3xl rounded-br-3xl cursor-pointer flex items-center gap-2">
+          {/* <li className="text-accent bg-secondary py-2 px-3 rounded-t-3xl rounded-br-3xl cursor-pointer flex items-center gap-2">
             <FaPencil /> Apply Now
-          </li>
+          </li> */}
         </ul>
+
+
+
 
         {/* ===== Mobile Menu Toggle ===== */}
         <div
