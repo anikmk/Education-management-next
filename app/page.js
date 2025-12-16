@@ -16,6 +16,7 @@ import ChairmanSpeech from "./components/Home/HomeSections/ChairmanSpeech/Chairm
 import TeacherSpeech from "./components/Home/HomeSections/TeacherSpeech/TeacherSpeech";
 import SchoolCommittee from "./components/Home/HomeSections/SchoolCommittee/SchoolCommittee";
 import InstituteFounder from "./components/Home/HomeSections/InstituteFounder/InstituteFounder";
+import Donner from "./components/Home/HomeSections/Donner/Donner";
 
 export default function Home() {
   return (
@@ -33,6 +34,7 @@ export default function Home() {
      <OurTeam />
      <SchoolCommittee />
      <InstituteFounder />
+     <Donner />
      <ChoiceUs />
      <UpComingEvents />
      <OurSkill />

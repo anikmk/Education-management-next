@@ -1,5 +1,6 @@
 import { institute_founder_list } from "@/api/institute_founder_list/institute_founder_list";
 import { get_school_record } from "@/api/school_info/school_info_Api";
+import Container from "@/components/Shared/Container/Container";
 import Image from "next/image";
 
 import { FaPhoneVolume } from "react-icons/fa6";
@@ -10,7 +11,9 @@ export default async function InstituteFounder() {
   const founders = await institute_founder_list(api);
     const school_record = await get_school_record(api);
   return (
-    <section className="container mx-auto px-4 py-12">
+    <Container>
+
+        <section className="px-4 py-12">
       {/* Section Title */}
       <div className="mb-10">
         <h2 className="text-3xl font-bold text-secondary">Institute Founders</h2>
@@ -73,5 +76,7 @@ export default async function InstituteFounder() {
         ))}
       </div>
     </section>
+
+    </Container>
   );
 }
