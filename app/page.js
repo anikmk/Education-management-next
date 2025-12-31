@@ -1,8 +1,6 @@
 
 
 import { AboutUs, ChoiceUs } from "@components/Home/HomeSections";
-import Counter from "@components/Home/HomeSections/Counter/Counter";
-import Facilities from "@components/Home/HomeSections/Facilites/Facilites";
 import LatestNews from "@components/Home/HomeSections/LatestNews/LatestNews";
 import OurClient from "@components/Home/HomeSections/OurClient/OurClient";
 import OurCourse from "@components/Home/HomeSections/OurCourse/OurCourse";
@@ -17,21 +15,25 @@ import TeacherSpeech from "./components/Home/HomeSections/TeacherSpeech/TeacherS
 import SchoolCommittee from "./components/Home/HomeSections/SchoolCommittee/SchoolCommittee";
 import InstituteFounder from "./components/Home/HomeSections/InstituteFounder/InstituteFounder";
 import Donner from "./components/Home/HomeSections/Donner/Donner";
+import StudentsStatisticsReportServer from "./components/Home/HomeSections/StudentsStatisticsReport/StudentsStatisticsReportServer";
+import InstituteStatisticsReportServer from "./components/Home/HomeSections/InstituteStatisticsReport/InstituteStatisticsReportServer";
+import InstituteInfo from "./components/Home/HomeSections/InstituteInfo/InstituteInfo";
 
 export default function Home() {
   return (
     <div className="">
         <div>
         <HeroServer />
-        <Facilities />
+        <InstituteInfo />
       </div>
       <ChairmanSpeech />
      <AboutUs />
      <TeacherSpeech />
-     <Counter />
+     <InstituteStatisticsReportServer />
      <OurCourse />
      <LatestNews />
      <OurTeam />
+     <StudentsStatisticsReportServer />
      <SchoolCommittee />
      <InstituteFounder />
      <Donner />

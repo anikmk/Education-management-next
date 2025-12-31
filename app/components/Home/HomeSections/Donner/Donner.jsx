@@ -34,7 +34,7 @@ export default async function Donner() {
               {/* Image */}
               <div className="flex-shrink-0">
                 <Image
-                  src={`${imgBaseUrl}/${school_record?.result?.eiin}/donner/${donner.id}${donner.img_ext}`}
+                  src={`${imgBaseUrl}/${school_record?.result?.eiin}/profile/${donner.id}${donner.img_ext}`}
                   alt={donner.name_en}
                   width={110}
                   height={130}

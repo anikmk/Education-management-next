@@ -9,7 +9,7 @@ export default async function InstituteFounder() {
   const api = process.env.NEXT_PUBLIC_PATHSHALA_SCHOOL_CODE;
   const imgBaseUrl = process.env.NEXT_PUBLIC_IMAGE_BASEURL;
   const founders = await institute_founder_list(api);
-    const school_record = await get_school_record(api);
+  const school_record = await get_school_record(api);
   return (
     <Container>
 
@@ -30,7 +30,7 @@ export default async function InstituteFounder() {
             {/* Image */}
             <div className="flex-shrink-0">
               <Image
-                src={`${imgBaseUrl}/${school_record?.result?.eiin}/founder/${founder.id}${founder.img_ext}`}
+                src={`${imgBaseUrl}/${school_record?.result?.eiin}/profile/${founder.id}${founder.img_ext}`}
                 alt={founder.name_en}
                 width={110}
                 height={130}
