@@ -30,9 +30,9 @@ export default function Home() {
      <AboutUs />
      <TeacherSpeech />
      <InstituteStatisticsReportServer />
+     <OurTeam />
      <OurCourse />
      <LatestNews />
-     <OurTeam />
      <StudentsStatisticsReportServer />
      <SchoolCommittee />
      <InstituteFounder />

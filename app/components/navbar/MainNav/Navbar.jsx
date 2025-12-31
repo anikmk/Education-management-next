@@ -78,11 +78,11 @@ export default function Navbar({data}) {
             <ul className="absolute left-0 top-14 bg-black text-accent w-56 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 ease-in-out border-t-2 border-secondary">
                 <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">
                   About Us</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">History</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer"><Link href={'/site/pages/history'}>History</Link></li>
               <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Founder & Doner List</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Our Vission</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer"><Link href={'/site/pages/mission-vision'}>Our Vission</Link></li>
               <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Campus Tour</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Achievements</li>
+              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer"><Link href={'/site/pages/achievements'}>Achievements</Link></li>
               <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Honarable Chairman</li>
               <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Our Principal</li>
               <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Administrators</li>
