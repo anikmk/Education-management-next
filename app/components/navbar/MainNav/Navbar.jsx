@@ -8,6 +8,11 @@ import Image from "next/image";
 import DarkModeBtn from "../DarkModeBtn/DarkModeBtn";
 import LanguageToggleBtn from "../LanguageToggle/LanguageToggleBtn";
 import Cookies from "js-cookie";
+import { academicsub_menuItems } from "./NavSubItemsJsonData/academic";
+import { about_sub_menu } from "./NavSubItemsJsonData/about";
+import { admission_sub_menu } from "./NavSubItemsJsonData/admission";
+import { student_sub_menu } from "./NavSubItemsJsonData/students";
+import { facilities_sub_menu } from "./NavSubItemsJsonData/facilites";
 
 export default function Navbar({data}) {
   const logoUrl_1 = data?.result?.site_path;
@@ -76,16 +81,12 @@ export default function Navbar({data}) {
               About <FaChevronDown className="text-xs mt-1" />
             </button>
             <ul className="absolute left-0 top-14 bg-black text-accent w-56 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 ease-in-out border-t-2 border-secondary">
-                <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">
-                  About Us</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer"><Link href={'/site/pages/history'}>History</Link></li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Founder & Doner List</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer"><Link href={'/site/pages/mission-vision'}>Our Vission</Link></li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Campus Tour</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer"><Link href={'/site/pages/achievements'}>Achievements</Link></li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Honarable Chairman</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Our Principal</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Administrators</li>
+            
+              {
+                about_sub_menu?.map((aboutSubMenu) =>(
+                  <li key={aboutSubMenu?.id} className="px-4 py-2 hover:bg-red-600 cursor-pointer"><Link href={aboutSubMenu?.path}>{aboutSubMenu?.sub_menu}</Link></li>
+              ))}
+
             </ul>
           </li>
 
@@ -108,36 +109,34 @@ export default function Navbar({data}) {
               Academic <FaChevronDown className="text-xs mt-1" />
             </button>
             <ul className="absolute left-0 top-14 bg-black text-accent w-56 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 ease-in-out border-t-2 border-secondary">
-              <Link href={'/'}>
-                <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">
-                  Class Schedule
+              {
+              academicsub_menuItems?.map((subMenu) => (
+                <li
+                  key={subMenu?.id}
+                  className="px-4 py-2 hover:bg-red-600 cursor-pointer"
+                >
+                  <Link href={subMenu?.path}>
+                    {subMenu?.sub_menu}
+                  </Link>
                 </li>
-              </Link>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Our Teachers</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Former Teachers</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Our Staffs</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Former Staffs</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Academic Rules</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Academic Calender</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Attendance Sheet</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Leave Information</li>
+              ))
+            }
             </ul>
           </li>
 
           <li className="relative group">
             <button className="flex items-center gap-1 hover:text-red-600">
-              {language === "en" ? "Admission":"ভর্তি"} <FaChevronDown className="text-xs mt-1" />
+              Admission<FaChevronDown className="text-xs mt-1" />
             </button>
             <ul className="absolute left-0 top-14 bg-black text-accent w-56 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 ease-in-out border-t-2 border-secondary">
-              <Link href={'/admission/howToApply'}>
-                <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">
-                  Why Study?
+
+              {
+                admission_sub_menu?.map((admissionSubMenu) =>(
+                <li key={admissionSubMenu?.id} className="px-4 py-2 hover:bg-red-600 cursor-pointer">
+                 <Link href={admissionSubMenu?.path}>{admissionSubMenu?.sub_menu}</Link>
                 </li>
-              </Link>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">How to apply</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Admission Test</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Admission Policy</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Registration System</li>
+                ))}
+
             </ul>
           </li>
 
@@ -146,14 +145,14 @@ export default function Navbar({data}) {
               Students <FaChevronDown className="text-xs mt-1" />
             </button>
             <ul className="absolute left-0 top-14 bg-black text-accent w-56 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 ease-in-out border-t-2 border-secondary">
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Student List</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Tution Fees</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Mobile Banking</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Daily Activites</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Exam Schedule</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Student Uniform</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Exam System</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Rules and Regulation</li>
+              {
+                student_sub_menu?.map((studentsSubMenu) =>(
+                   <Link key={studentsSubMenu?.id} href={studentsSubMenu?.path}>
+                   <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">{studentsSubMenu?.sub_menu}</li>
+                   </Link>
+                ))
+              }
+             
             </ul>
           </li>
           <li className="relative group">
@@ -161,13 +160,14 @@ export default function Navbar({data}) {
               Facilites <FaChevronDown className="text-xs mt-1" />
             </button>
             <ul className="absolute left-0 top-14 bg-black text-accent w-56 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 ease-in-out border-t-2 border-secondary">
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Library</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Play Ground</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Physics Lab</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Biology Lab</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">ICT Lab</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Chemistry Lab</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Extra Activites</li>
+              {
+                facilities_sub_menu?.map((facilitesSubMenu) => (
+                  <Link key={facilitesSubMenu?.id} href={facilitesSubMenu?.path}>
+                    <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">{facilitesSubMenu?.sub_menu}</li>
+                  </Link>
+                ))
+              }
+
             </ul>
           </li>
           <li className="relative group">
@@ -182,7 +182,7 @@ export default function Navbar({data}) {
             </ul>
           </li>
 
-          <li className="hover:text-red-600 cursor-pointer">Contact</li>
+          <Link href={'/contact'}><li className="hover:text-red-600 cursor-pointer">Contact</li></Link>
           <li className="hover:text-red-600 cursor-pointer">
             <FaSearch /> 
           </li>

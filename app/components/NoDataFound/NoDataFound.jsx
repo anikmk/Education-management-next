@@ -1,6 +1,7 @@
 import Link from "next/link";
 import emtyImg from "../../../public/assets/img/not-found/empty.png"
 import Image from "next/image";
+import { MdErrorOutline } from "react-icons/md";
 export default function NoDataFound({ title }) {
   return (
     <section className="min-h-screen flex items-center justify-center">
@@ -11,8 +12,10 @@ export default function NoDataFound({ title }) {
           {title}
         </h1>
 
-        <div className="flex justify-center mb-6">
-          <span className="w-16 h-[2px] bg-gray-400"></span>
+        <div className="flex justify-center mb-6 items-center gap-2">
+          <span className="w-10 h-[2px] bg-secondary"></span>
+          <MdErrorOutline />
+          <span className="w-10 h-[2px] bg-secondary"></span>
         </div>
 
         {/* Emoji / Icon */}
