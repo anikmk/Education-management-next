@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import ErrorFormText from "./ErrorFormText";
 
 export default function AcademicResultForm() {
-  const { register, handleSubmit,formState:{errors} } = useForm();
+  const { register, handleSubmit, formState:{errors} } = useForm();
 
   const onSubmit = (data) => {
     console.log("FORM DATA:", data);
@@ -23,7 +23,7 @@ export default function AcademicResultForm() {
           </label>
           <select
             {...register("exam",{required:"Please Select Exam"})}
-            className="w-full border border-slate-300 px-3 py-2 rounded"
+            className="w-full border border-slate-300 px-3 py-2 rounded text-sm"
           >
             <option value="">Select A Class, Exam & Session</option>
             <option value="final-2024">Final Exam 2024</option>
@@ -39,7 +39,7 @@ export default function AcademicResultForm() {
           </label>
           <select
             {...register("section")}
-            className="w-full border px-3 py-2 rounded"
+            className="w-full border border-slate-300 px-3 py-2 rounded text-sm"
           >
             <option value="">Select One</option>
             <option value="A">A</option>
@@ -56,7 +56,7 @@ export default function AcademicResultForm() {
           </label>
           <select
             {...register("group")}
-            className="w-full border px-3 py-2 rounded"
+            className="w-full border border-slate-300 px-3 py-2 rounded text-sm"
           >
             <option value="">Select One</option>
             <option value="science">Science</option>
@@ -80,7 +80,7 @@ export default function AcademicResultForm() {
             }})}
             
             placeholder="Enter Roll"
-            className="w-full border px-3 py-2 rounded"
+            className="w-full border border-slate-300 px-3 py-2 rounded text-sm"
           />
           {/* error message */}
           <ErrorFormText errorMessage={errors.roll?.message}/>
