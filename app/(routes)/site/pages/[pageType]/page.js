@@ -48,7 +48,7 @@ export default async function Page({ params }) {
   const pageData = await get_individual_pages(pageType, api);
   const instituteRecord = await get_school_record(api);
 
-  if (!pageData) {
+  if (pageData?.news_details === '') {
     return <NoDataFound title={pageType} />;
   }
 

@@ -13,6 +13,7 @@ import { about_sub_menu } from "./NavSubItemsJsonData/about";
 import { admission_sub_menu } from "./NavSubItemsJsonData/admission";
 import { student_sub_menu } from "./NavSubItemsJsonData/students";
 import { facilities_sub_menu } from "./NavSubItemsJsonData/facilites";
+import { result_sub_menu } from "./NavSubItemsJsonData/result";
 
 export default function Navbar({data}) {
   const logoUrl_1 = data?.result?.site_path;
@@ -175,10 +176,14 @@ export default function Navbar({data}) {
               Result <FaChevronDown className="text-xs mt-1" />
             </button>
             <ul className="absolute left-0 top-14 bg-black text-accent w-56 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 ease-in-out border-t-2 border-secondary">
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Exam Result </li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Academic Result</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Evaluation Result</li>
-              <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">Board Exam Result</li>
+              
+             {
+              result_sub_menu?.map((resultSubMenu) => (
+                <Link key={resultSubMenu?.id} href={resultSubMenu?.path}>
+                <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">{resultSubMenu?.sub_menu}</li>
+                </Link>
+              ))
+             }
             </ul>
           </li>
 
