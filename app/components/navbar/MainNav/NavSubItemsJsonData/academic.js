@@ -5,7 +5,7 @@ export const academicsub_menuItems = [
     },
     {   id:2,
         sub_menu:"Our Teachers",
-        path:"/"
+        path:"/teachers"
     },
     {   id:3,
         sub_menu:"Former Teachers",
