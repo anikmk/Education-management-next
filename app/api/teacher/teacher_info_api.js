@@ -6,3 +6,7 @@ export async function get_teachers(api) {
 }
 
 
+export const get_single_teacher = async(id,api) => {
+  const {data} = await axiosPublic.get(`/get_employee_profile/${id}/${api}`);
+  return data;
+}
