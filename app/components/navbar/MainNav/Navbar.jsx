@@ -14,6 +14,7 @@ import { admission_sub_menu } from "./NavSubItemsJsonData/admission";
 import { student_sub_menu } from "./NavSubItemsJsonData/students";
 import { facilities_sub_menu } from "./NavSubItemsJsonData/facilites";
 import { result_sub_menu } from "./NavSubItemsJsonData/result";
+import { others_sub_menu } from "./NavSubItemsJsonData/others";
 
 export default function Navbar({data}) {
   const logoUrl_1 = data?.result?.site_path;
@@ -181,6 +182,21 @@ export default function Navbar({data}) {
               result_sub_menu?.map((resultSubMenu) => (
                 <Link key={resultSubMenu?.id} href={resultSubMenu?.path}>
                 <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">{resultSubMenu?.sub_menu}</li>
+                </Link>
+              ))
+             }
+            </ul>
+          </li>
+          <li className="relative group">
+            <button className="flex items-center gap-1 hover:text-red-600">
+              Others <FaChevronDown className="text-xs mt-1" />
+            </button>
+            <ul className="absolute left-0 top-14 bg-black text-accent w-56 opacity-0 translate-y-2 invisible group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible transition-all duration-300 ease-in-out border-t-2 border-secondary">
+              
+             {
+              others_sub_menu?.map((othertSubMenu) => (
+                <Link key={othertSubMenu?.id} href={othertSubMenu?.path}>
+                <li className="px-4 py-2 hover:bg-red-600 cursor-pointer">{othertSubMenu?.sub_menu}</li>
                 </Link>
               ))
              }
