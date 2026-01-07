@@ -1,6 +1,39 @@
 import { get_single_notice } from "@/api/others/notice/notice";
 import Container from "@/components/Shared/Container/Container";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+import ShareNoticeBtn from "../../../ShareNoticeBtn";
+import { headers } from "next/headers";
+/* ===============================
+   Dynamic Metadata (Facebook FIX)
+================================ */
+export async function generateMetadata({ params }) {
+  const { id } = params;
+  const api = process.env.NEXT_PUBLIC_PATHSHALA_SCHOOL_CODE;
+
+  const noticeDetails = await get_single_notice(id, api);
+
+  const headersList = headers();
+  const host = headersList.get("host");
+  const protocol = process.env.NODE_ENV === "development" ? "http" : "https";
+
+  const url = `${protocol}://${host}/details/1/${id}`;
+  const title = noticeDetails?.[0]?.title_english || "Notice Details";
+
+  return {
+    title,
+    description: title,
+    openGraph: {
+      title,
+      description: title,
+      url,
+      type: "article",
+    },
+  };
+}
+
+/* ===============================
+   Page Component
+================================ */
 
 
 
@@ -8,6 +41,11 @@ export default async function NoticeDetailsPage({params}) {
     const {id} = await params;
     const api = process.env.NEXT_PUBLIC_PATHSHALA_SCHOOL_CODE;
     const noticeDetails = await get_single_notice(id,api);
+
+        const headersList = headers();
+        const host = headersList.get("host");
+        const protocol = process.env.NODE_ENV === "development" ? "http" : "https";
+  const currentUrl = `${protocol}://${host}/details/1/${id}`;
 
   return (
     <div className='mt-32 py-16'>
@@ -40,6 +78,8 @@ export default async function NoticeDetailsPage({params}) {
 
                
             </div>
+            <div className="bg-primary w-20 h-[2px] my-2 mt-8 rounded-2xl"></div>
+            <div className="mt-5"><ShareNoticeBtn title={noticeDetails[0]?.title_english} url={currentUrl}/></div>
        </Container>
     </div>
   )
